@@ -10,7 +10,7 @@
     <body>
         <header>
             <div id="title">
-                Login
+                Nerdbook - Login
             </div>
         </header>
         <nav>
@@ -24,8 +24,12 @@
             <div id="formLogin">
                 <form action="servlet.java" method="post">
                     <div>
-                        
+                        <label for="user_id">ID utente</label>
+                        <input type="text" name="user_id" id="user_id"/><br>
+                        <label for="psw">Password</label>
+                        <input type="password" name="psw" id="psw"/>
                     </div>
+                    <button type="submit">Login</button>
                 </form>
             </div>
         </div>
