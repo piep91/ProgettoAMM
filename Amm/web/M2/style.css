@@ -42,7 +42,12 @@ a:hover{
 }
 
 #mod_profile label{
+    display: inline-block;
     line-height: 30px;
     width: 150px;
+}
+
+textarea{
+    height: 30px;
 }
 
