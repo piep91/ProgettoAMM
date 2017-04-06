@@ -35,3 +35,14 @@ a:visited{
 a:hover{
     font-weight: bold;
 }
+
+#formLogin label::after, #formLogin label::before{
+    content: '\A';
+    white-space: pre; 
+}
+
+#mod_profile label{
+    line-height: 30px;
+    width: 150px;
+}
+
