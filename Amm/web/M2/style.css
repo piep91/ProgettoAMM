@@ -52,12 +52,42 @@ textarea{
 }
 
 #title{
+    width: 250px;
+    height: 60px;
+    text-align: center;
     font-weight: bold;
     font: 40px "Calibri", Arial, sans-serif;
+    float: left;
+    border: 2px solid #526579;
+}
+
+nav ol{
+    height: 60px;
+    border: 2px solid #526579;
+    padding-left: 0px;
 }
 
 nav ol, nav li{
     list-style-type: none;
     display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    font: 35px "Calibri", Arial, sans-serif;
 }
 
+nav li{
+    height: 97%;
+    padding-left: 15px;
+    padding-top: 4px;
+    border-right: 2px solid #526579;
+    padding-right: 15px;
+}
+
+nav li:last-child{
+    border-right: 0px;
+}
+
+nav li.active{
+    background-color: #85a4a7;
+}
