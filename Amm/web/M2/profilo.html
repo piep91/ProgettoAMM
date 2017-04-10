@@ -22,33 +22,46 @@
                     <li class="active"><a href="profilo.html">Profilo</a></li><!--
                     --><li><a href="bacheca.html">Bacheca</a></li>
                 </ol>
+                <div id="logout">
+                    Pieppo
+                    <a href="login.html">Logout</a>
+                </div>
             </nav>
-            <div id="logout">
-                Pieppo
-                <a href="login.html">Logout</a>
-            </div>
         </div>
         <div id="divBody">
-                <form action="servlet.java" method="post">
-                    <div id="mod_profile">
-                        <h2>Modifica profilo personale</h2>
-                            <label for="name">Nome</label>
-                            <input type="text" name="name" id="name"/><br>
-                            <label for="surname">Cognome</label>
-                            <input type="text" name="surname" id="surname"/><br>
-                            <label for="img">Immagine profilo</label>
-                            <input type="url" name="img" id="img"/><br>
-                            <label for="pres">Frase di presentazione</label>
-                            <textarea rows="3" cols="20" name="pres" id="pres"></textarea><br>
-                            <label for="bday">Data di nascita</label>
-                            <input type="date" name="bday" id="bday"/><br>
-                            <label for="psw">Password</label>
-                            <input type="password" name="psw" id="psw"/><br>
-                            <label for="c_psw">Conferma password</label>
-                            <input type="password" name="c_psw" id="c_psw"/><br>
-                    </div>
+            <div id="lat_col">
+                <h2>Persone</h2>
+                <ul>
+                    <li>Gigi</li>
+                    <li>Wowo</li>
+                    <li>Gianni</li>
+                </ul>
+                <h2>Gruppi</h2>
+                <ul>
+                    <li>Consolari</li>
+                    <li>PCisti</li>
+                </ul>
+            </div>
+            <form action="servlet.java" method="post">
+                <div id="mod_profile">
+                    <h2>Modifica profilo personale</h2>
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" id="name"/><br>
+                    <label for="surname">Cognome</label>
+                    <input type="text" name="surname" id="surname"/><br>
+                    <label for="img">Immagine profilo</label>
+                    <input type="url" name="img" id="img"/><br>
+                    <label for="pres">Frase di presentazione</label>
+                    <textarea rows="3" cols="20" name="pres" id="pres"></textarea><br>
+                    <label for="bday">Data di nascita</label>
+                    <input type="date" name="bday" id="bday"/><br>
+                    <label for="psw">Password</label>
+                    <input type="password" name="psw" id="psw"/><br>
+                    <label for="c_psw">Conferma password</label>
+                    <input type="password" name="c_psw" id="c_psw"/><br>
                     <button type="submit">Applica</button>
-                </form>
+                </div>
+            </form>
         </div>
     </body>
 </html>

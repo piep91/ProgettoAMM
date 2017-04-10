@@ -49,6 +49,7 @@ a:hover{
 
 textarea{
     height: 30px;
+    width: 142px;
 }
 
 #title{
@@ -96,13 +97,73 @@ nav li.active{
 
 #logout{
     height: 97%;
+    text-align: center;
     float: right;
     font: 20px "Calibri", Arial, sans-serif;
     font-weight: bold;
     color: #111111;
+    padding-right: 15px;
+}
+
+#logout a{
+    font: 15px "Calibri", Arial, sans-serif;
+    font-weight: normal;
+    text-decoration: underline;
 }
 
 #logout a::before{
     content: '\A';
     white-space: pre;
+}
+
+#lat_col{
+    background-color: #00ccff;
+    float: left;
+    height: 350px;
+    width: 250px;
+    text-align: center;
+    border: 2px solid #526579;
+}
+
+#lat_col ul{
+    list-style-type: none;
+    font-weight: bold;
+    padding-left: 0px;
+}
+
+#mod_profile{
+    background-color: #bfbfbf;
+    height: 350px;
+    border: 2px solid #526579;
+    text-align: center;
+}
+
+#mod_profile label{
+    text-align: left;
+}
+
+#mod_profile button{
+    text-align: center;
+    width: 25%;
+}
+
+#title_login{
+    width: 250px;
+    height: 60px;
+    text-align: center;
+    font-weight: bold;
+    font: 40px "Calibri", Arial, sans-serif;
+    position: relative;
+    left: 550px;
+}
+
+#formLogin{
+    background-color: #bfbfbf;
+    text-align: center;
+    font: 20px "Calibri", Arial, sans-serif;
+    width: 225px;
+    height: 175px;
+    border: 2px solid #526579;
+    position: relative;
+    left: 560px;
 }
