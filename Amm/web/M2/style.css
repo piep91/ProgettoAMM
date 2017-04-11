@@ -37,154 +37,175 @@ a:hover{
 }
 
 #formLogin label::after, #formLogin label::before{
-    content: '\A';
-    white-space: pre; 
+     content: '\A';
+     white-space: pre; 
 }
 
 #mod_profile label{
-    display: inline-block;
-    line-height: 30px;
-    width: 150px;
+     display: inline-block;
+     line-height: 30px;
+     width: 150px;
+}
+
+input:focus, textarea:focus{
+    border-color: blue;
+}
+
+input:hover, textarea:hover{
+    border-color: lightblue;
 }
 
 textarea{
-    height: 30px;
-    width: 142px;
+     height: 30px;
+     width: 142px;
 }
 
-#title{
-    background-color: #00ccff;
-    width: 250px;
-    height: 60px;
-    text-align: center;
-    font-weight: bold;
-    font: 40px "Calibri", Arial, sans-serif;
-    float: left;
-    border: 2px solid #526579;
-}
+@media only screen and (min-width: 1024px){
+ 
+    #title{
+        background-color: #00ccff;
+        width: 250px;
+        height: 60px;
+        text-align: center;
+        font-weight: bold;
+        font: 40px "Calibri", Arial, sans-serif;
+        float: left;
+        border: 2px solid #526579;
+    }
 
-#navBar{
-    background-color: #1affff;
-    height: 60px;
-    border: 2px solid #526579;
-    float: top;
-}
+    #navBar{
+        background-color: #1affff;
+        height: 60px;
+        border: 2px solid #526579;
+        float: top;
+    }
 
-nav ol{
-    height: 60px;
-    padding-left: 0px;
-}
+    nav ol{
+        height: 60px;
+        padding-left: 0px;
+    }
 
-nav ol, nav li{
-    list-style-type: none;
-    display: inline-block;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font: 35px "Calibri", Arial, sans-serif;
-}
+    nav ol, nav li{
+        list-style-type: none;
+        display: inline-block;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font: 35px "Calibri", Arial, sans-serif;
+    }
 
-nav li{
-    height: 97%;
-    padding-left: 15px;
-    padding-top: 4px;
-    border-right: 2px solid #526579;
-    padding-right: 15px;
-}
+    nav li{
+        height: 97%;
+        padding-left: 15px;
+        padding-top: 4px;
+        border-right: 2px solid #526579;
+        padding-right: 15px;
+    }
 
-nav li.active{
-    background-color: #85a4a7;
-}
+    nav li.active{
+        background-color: #85a4a7;
+    }
 
-#logout{
-    height: 97%;
-    text-align: center;
-    float: right;
-    font: 20px "Calibri", Arial, sans-serif;
-    font-weight: bold;
-    color: #111111;
-    padding-right: 15px;
-}
+    #logout{
+        height: 97%;
+        text-align: center;
+        float: right;
+        font: 20px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+        color: #111111;
+        padding-right: 15px;
+    }
 
-#logout a{
-    font: 15px "Calibri", Arial, sans-serif;
-    font-weight: normal;
-    text-decoration: underline;
-}
+    #logout a{
+        font: 15px "Calibri", Arial, sans-serif;
+        font-weight: normal;
+        text-decoration: underline;
+    }
 
-#logout a::before{
-    content: '\A';
-    white-space: pre;
-}
+    #logout a::before{
+        content: '\A';
+        white-space: pre;
+    }
 
-#lat_col{
-    background-color: #00ccff;
-    float: left;
-    height: 350px;
-    width: 250px;
-    text-align: center;
-    border: 2px solid #526579;
-}
+    #lat_col{
+        background-color: #00ccff;
+        float: left;
+        height: 350px;
+        width: 250px;
+        text-align: center;
+        border: 2px solid #526579;
+    }
 
-#lat_col ul{
-    list-style-type: none;
-    font-weight: bold;
-    padding-left: 0px;
-}
+    #lat_col ul{
+        list-style-type: none;
+        font-weight: bold;
+        padding-left: 0px;
+    }
 
-#mod_profile{
-    background-color: #bfbfbf;
-    height: 350px;
-    border: 2px solid #526579;
-    text-align: center;
-}
+    #mod_profile{
+        background-color: #bfbfbf;
+        height: 350px;
+        border: 2px solid #526579;
+        text-align: center;
+    }
 
-#mod_profile label{
-    text-align: left;
-}
+    #mod_profile label{
+        text-align: left;
+    }
 
-#mod_profile button{
-    text-align: center;
-    width: 25%;
-}
+    #mod_profile button{
+        text-align: center;
+        width: 25%;
+    }
 
-#title_login{
-    width: 250px;
-    height: 60px;
-    text-align: center;
-    font-weight: bold;
-    font: 40px "Calibri", Arial, sans-serif;
-    position: relative;
-    left: 550px;
-}
+    #title_login{
+        width: 250px;
+        height: 60px;
+        text-align: center;
+        font-weight: bold;
+        font: 40px "Calibri", Arial, sans-serif;
+        position: relative;
+        left: 490px;
+    }
 
-#formLogin{
-    background-color: #bfbfbf;
-    text-align: center;
-    font: 20px "Calibri", Arial, sans-serif;
-    width: 225px;
-    height: 175px;
-    border: 2px solid #526579;
-    position: relative;
-    left: 560px;
-}
+    #formLogin{
+        background-color: #bfbfbf;
+        text-align: center;
+        font: 20px "Calibri", Arial, sans-serif;
+        width: 225px;
+        height: 175px;
+        border: 2px solid #526579;
+        position: relative;
+        left: 500px;
+    }
 
-.img_pro{
-    width: 50px;
-    height: 50px;
-}
+    .img_pro{
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+    }
 
-.allegato{
-    width: 200px;
-    height: 150px;
-}
+    .allegato{
+        width: 200px;
+        height: 150px;
+    }
 
-#post{
-    float: left;
-}
+    #post{
+        float: left;
+    }
 
-#post div{
-    border: 2px solid #526579;
-    background-color: #bfbfbf;
-    width: 1069px;
-}
+    #post > div{
+        border: 2px solid #526579;
+        background-color: #bfbfbf;
+        width: 730px;
+    }
 
+    #post div div img, #post div div h3{
+        display: inline-block;
+    }
+
+    #post div div h3{
+        margin-top: 0px;
+        position: relative;
+        bottom: 20px;
+    }
+}
