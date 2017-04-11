@@ -41,6 +41,10 @@ a:hover{
      white-space: pre; 
 }
 
+#description{
+    clear: left;
+}
+
 #mod_profile label{
      display: inline-block;
      line-height: 30px;
@@ -67,8 +71,8 @@ textarea{
         width: 250px;
         height: 60px;
         text-align: center;
-        font-weight: bold;
         font: 40px "Calibri", Arial, sans-serif;
+        font-weight: bold;
         float: left;
         border: 2px solid #526579;
     }
@@ -161,8 +165,8 @@ textarea{
         width: 250px;
         height: 60px;
         text-align: center;
-        font-weight: bold;
         font: 40px "Calibri", Arial, sans-serif;
+        font-weight: bold;
         position: relative;
         left: 490px;
     }
@@ -208,4 +212,242 @@ textarea{
         position: relative;
         bottom: 20px;
     }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 480px){
+    
+    h1{
+        font: 25px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+    
+    h2{
+        font: 20px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+    
+    h3{
+        font: 16px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+    
+    #title{
+        background-color: #00ccff;
+        width: 155px;
+        height: 40px;
+        text-align: center;
+        font: 30px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+        float: left;
+        border: 2px solid #526579;
+    }
+
+    #navBar{
+        background-color: #1affff;
+        height: 40px;
+        border: 2px solid #526579;
+        float: top;
+    }
+
+    nav ol{
+        height: 40px;
+        padding-left: 0px;
+    }
+
+    nav ol, nav li{
+        list-style-type: none;
+        display: inline-block;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font: 25px "Calibri", Arial, sans-serif;
+    }
+
+    nav li{
+        height: 97%;
+        padding-left: 15px;
+        padding-top: 4px;
+        border-right: 2px solid #526579;
+        padding-right: 15px;
+    }
+
+    nav li.active{
+        background-color: #85a4a7;
+    }
+
+    #logout{
+        height: 97%;
+        text-align: center;
+        float: right;
+        font: 16px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+        color: #111111;
+        padding-right: 15px;
+    }
+
+    #logout a{
+        font: 13px "Calibri", Arial, sans-serif;
+        font-weight: normal;
+        text-decoration: underline;
+    }
+
+    #logout a::before{
+        content: '\A';
+        white-space: pre;
+    }
+
+    #lat_col{
+        background-color: #00ccff;
+        float: left;
+        height: 350px;
+        width: 155px;
+        text-align: center;
+        border: 2px solid #526579;
+    }
+    
+    #lat_col ul{
+        list-style-type: none;
+        font-weight: bold;
+        padding-left: 0px;
+    }
+
+    #mod_profile{
+        background-color: #bfbfbf;
+        height: 350px;
+        border: 2px solid #526579;
+        text-align: center;
+    }
+
+    #mod_profile label{
+        text-align: left;
+    }
+
+    #mod_profile button{
+        text-align: center;
+        width: 25%;
+    }
+
+    #title_login{
+        width: 250px;
+        height: 60px;
+        text-align: center;
+        font: 40px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    #formLogin{
+        background-color: #bfbfbf;
+        text-align: center;
+        font: 20px "Calibri", Arial, sans-serif;
+        width: 225px;
+        height: 175px;
+        border: 2px solid #526579;
+    }
+
+    .img_pro{
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+    }
+
+    .allegato{
+        width: 200px;
+        height: 150px;
+    }
+
+    #post{
+        float: left;
+    }
+
+    #post > div{
+        border: 2px solid #526579;
+        background-color: #bfbfbf;
+    }
+
+    #post div div img, #post div div h3{
+        display: inline-block;
+    }
+
+    #post div div h3{
+        margin-top: 0px;
+        position: relative;
+        bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    
+    h1{
+        font: 25px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+    
+    h2{
+        font: 20px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+    
+    h3{
+        font: 16px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+    
+    #title, #title_login{
+        font: 30px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+    
+    nav ol, nav li{
+        list-style-type: none;
+        display: inline-block;
+        
+    }
+    
+    nav li{
+        padding: 5px;
+        border-right: 2px solid #526579;
+    }
+    
+    nav li:last-child{
+        border-right: none;
+    }
+    
+    .img_pro{
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+    }
+
+    .allegato{
+        width: 200px;
+        height: 150px;
+    }
+    
+    #logout{
+        float: right;
+        position: relative;
+        bottom: 100px;
+        font: 16px "Calibri", Arial, sans-serif;
+        font-weight: bold;
+    }
+    
+    #logout a{
+        font: 13px "Calibri", Arial, sans-serif;
+        font-weight: normal;
+        text-decoration: underline;
+    }
+    
+    #post > div, #lat_col, #mod_profile{
+        border-top: 2px solid #526579;
+    }
+    
+    #post div div img, #post div div h3{
+        display: inline-block;
+    }
+
+    #post div div h3{
+        margin-top: 0px;
+        position: relative;
+        bottom: 20px;
+    }
+    
 }
