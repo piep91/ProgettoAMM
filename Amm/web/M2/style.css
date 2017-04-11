@@ -65,7 +65,6 @@ textarea{
 }
 
 @media only screen and (min-width: 1024px){
- 
     #title{
         background-color: #00ccff;
         width: 250px;
@@ -215,7 +214,6 @@ textarea{
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 480px){
-    
     h1{
         font: 25px "Calibri", Arial, sans-serif;
         font-weight: bold;
@@ -375,7 +373,6 @@ textarea{
 }
 
 @media only screen and (max-width: 480px){
-    
     h1{
         font: 25px "Calibri", Arial, sans-serif;
         font-weight: bold;
@@ -449,5 +446,4 @@ textarea{
         position: relative;
         bottom: 20px;
     }
-    
 }
