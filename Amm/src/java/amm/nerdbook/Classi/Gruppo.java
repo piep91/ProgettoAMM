@@ -15,6 +15,7 @@ public class Gruppo {
     private int id;
     private String nome;
     private ArrayList<Nerd> listaNerdGruppo = new ArrayList<Nerd>();
+    private ArrayList<Post> listaPostGruppo = new ArrayList<Post>();
     
     public Gruppo(){
         id = 0;
@@ -61,6 +62,20 @@ public class Gruppo {
      */
     public void setListaNerdGruppo(ArrayList<Nerd> listaNerdGruppo) {
         this.listaNerdGruppo = listaNerdGruppo;
+    }
+    
+    /**
+     * @return the listaPostGruppo
+     */
+    public ArrayList<Post> getListaPostGruppo() {
+        return listaPostGruppo;
+    }
+
+    /**
+     * @param listaPostGruppo the listaPostGruppo to set
+     */
+    public void setListaPostGruppo(ArrayList<Post> listaPostGruppo) {
+        this.listaPostGruppo = listaPostGruppo;
     }
     
 }

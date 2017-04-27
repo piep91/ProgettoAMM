@@ -11,18 +11,20 @@ package amm.nerdbook.Classi;
 public class Post {
     
     public enum Tipo {
-        TEXT, IMAGE
+        TEXT, IMAGE, T_AND_I
     };
     
     private int id;
     private Nerd utente;
     private String content;
+    private String urlImg;
     private Tipo tipoPost;
     
     public Post(){
         id = 0;
         utente = null;
         content = "";
+        urlImg = "";
         tipoPost = Tipo.TEXT;
     }
     
@@ -67,7 +69,21 @@ public class Post {
     public void setContent(String content) {
         this.content = content;
     }
+    
+    /**
+     * @return the urlImg
+     */
+    public String getUrlImg() {
+        return urlImg;
+    }
 
+    /**
+     * @param urlImg the urlImg to set
+     */
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
+    }
+    
     /**
      * @return the tipoPost
      */
