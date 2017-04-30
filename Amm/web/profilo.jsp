@@ -36,19 +36,9 @@
             </nav>
         </div>
         <div id="divBody">
-            <div id="lat_col">
-                <h2>Persone</h2>
-                <ul>
-                    <li>Gigi</li>
-                    <li>Wowo</li>
-                    <li>Gianni</li>
-                </ul>
-                <h2>Gruppi</h2>
-                <ul>
-                    <li>Consolari</li>
-                    <li>PCisti</li>
-                </ul>
-            </div>
+            <!--barra laterale-->
+            <jsp:include page="lat_col.jsp"/>
+            
             <form action="servlet.java" method="post">
                 <div id="mod_profile">
                     <h2>Modifica profilo personale</h2>
