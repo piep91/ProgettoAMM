@@ -31,7 +31,7 @@
                 </ol>
                 <div id="logout">
                     Pieppo
-                    <a href="login.html">Logout</a>
+                    <a href="login.html?logout=1">Logout</a>
                 </div>
             </nav>
         </div>
@@ -39,7 +39,7 @@
             <!--barra laterale-->
             <jsp:include page="lat_col.jsp"/>
             
-            <form action="servlet.java" method="post">
+            <form action="profilo.html" method="post">
                 <div id="mod_profile">
                     <h2>Modifica profilo personale</h2>
                     <label for="name">Nome</label>

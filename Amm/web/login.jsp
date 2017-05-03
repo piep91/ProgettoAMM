@@ -23,18 +23,17 @@
         <c:set var="id" value="title_login" scope="request"/>
         <jsp:include page="header.jsp"/>
         
-        <div id="divBody">
-            <c:if test="${invalidData == true}">
-                    <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
-            </c:if>
-            
-            <form action="servlet.java" method="post">
+        <div id="divBody">            
+            <form action="login.html" method="post">
                 <div id="formLogin">
                     <label for="user_id">Nome Utente</label>
                     <input type="text" name="user_id" id="user_id"/>
                     <label for="psw">Password</label>
                     <input type="password" name="psw" id="psw"/><br>
                     <button type="submit">Accedi</button>
+                    <c:if test="${invalidData == true}">
+                    <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
+                    </c:if>
                 </div>
             </form>
         </div>

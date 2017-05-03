@@ -31,7 +31,7 @@
                 </ol>
                 <div id="logout">
                     Pieppo
-                    <a href="login.html">Logout</a>
+                    <a href="login.html?logout=1">Logout</a>
                 </div>
             </nav>
         </div>
