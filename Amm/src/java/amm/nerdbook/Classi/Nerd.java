@@ -110,6 +110,14 @@ public class Nerd {
         this.urlFotoProfilo = urlFotoProfilo;
     }
     
+    public int checkCompleteProfile(){
+        if(this.nome.equals("") && this.cognome.equals("") && this.email.equals("") && this.urlFotoProfilo.equals("")){
+            return -1;
+        }else{
+            return 1;
+        }
+    }
+    
     @Override
     public boolean equals(Object altroNerd){
         if (altroNerd instanceof Nerd)
