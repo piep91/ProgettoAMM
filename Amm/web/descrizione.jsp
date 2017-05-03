@@ -23,6 +23,13 @@
         <c:set var="id" value="title" scope="request"/>
         <jsp:include page="header.jsp"/>
         
+        <div id="navBar">
+            <nav>
+                <ol>
+                    <li><a href="login.html">Login</a></li>
+                </ol>
+            </nav>
+        </div>
         <div id="description">
             <br><h1>Descrizione generale del sito</h1>
             <h2>Sommario</h2>

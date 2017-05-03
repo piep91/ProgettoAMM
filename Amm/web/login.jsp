@@ -24,6 +24,10 @@
         <jsp:include page="header.jsp"/>
         
         <div id="divBody">
+            <c:if test="${invalidData == true}">
+                    <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
+            </c:if>
+            
             <form action="servlet.java" method="post">
                 <div id="formLogin">
                     <label for="user_id">Nome Utente</label>
