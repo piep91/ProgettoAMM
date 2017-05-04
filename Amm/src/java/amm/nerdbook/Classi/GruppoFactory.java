@@ -42,6 +42,9 @@ public class GruppoFactory {
         listaNerdGruppo2.add(nerdFactory.getNerdById(1));
         listaNerdGruppo2.add(nerdFactory.getNerdById(2));
         gruppo1.setListaNerdGruppo(listaNerdGruppo2);
+        
+        listaGruppi.add(gruppo1);
+        listaGruppi.add(gruppo2);
     }
     
     public Gruppo getGruppoById(int id){

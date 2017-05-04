@@ -45,6 +45,17 @@
                 <jsp:include page="lat_col.jsp"/>
 
                 <div id="post">
+                    <div>
+                        <form action="bacheca.html" method="post">
+                            <h3>Bacheca di ${user_bacheca.nome}</h3>
+                            <h2>Pubblica un nuovo post</h2>
+                            <textarea rows="3" cols="20" name="cont" id="pres"></textarea><br>
+                            <button type="submit">Conferma</button>
+                            <c:if test="${newPost == true}">
+                                <p>Post pubblicato</p>
+                            </c:if>
+                        </form>
+                    </div>
                     <c:forEach var="post" items="${posts}">
                         <div>
                             <div>

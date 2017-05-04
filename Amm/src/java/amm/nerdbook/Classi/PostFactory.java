@@ -42,6 +42,10 @@ public class PostFactory {
         post3.setId(2);
         post3.setContent("Iscrivetevi a questo sito di cashback: http://it.beruby.com/promocode/uVjKCl");
         post3.setUtente(nerdFactory.getNerdById(2));
+        
+        listaPost.add(post1);
+        listaPost.add(post2);
+        listaPost.add(post3);
     }
     
     public Post getPostById(int id) {
@@ -49,6 +53,10 @@ public class PostFactory {
             if (post.getId() == id) return post;
         }
         return null;
+    }
+    
+    public void addPost(Post post){
+        listaPost.add(post);
     }
     
     public List getPostList(Nerd nerd){

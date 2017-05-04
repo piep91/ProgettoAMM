@@ -195,7 +195,11 @@ textarea{
     #post{
         float: left;
     }
-
+    
+    #post form{
+        text-align: center;
+    }
+    
     #post > div{
         border: 2px solid #526579;
         background-color: #bfbfbf;

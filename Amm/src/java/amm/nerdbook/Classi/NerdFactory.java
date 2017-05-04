@@ -6,6 +6,7 @@
 package amm.nerdbook.Classi;
 
 import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Pierandrea
@@ -63,6 +64,10 @@ public class NerdFactory {
             if(user.getId() == id) return user; 
         }
         return null;
+    }
+    
+    public List getNerdList(){
+        return listaNerd;
     }
     
     public int getIdByUserAndPassword(String nome, String password){
