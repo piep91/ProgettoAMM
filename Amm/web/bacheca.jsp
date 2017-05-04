@@ -46,7 +46,7 @@
 
                 <div id="post">
                     <div>
-                        <form action="bacheca.html" method="post">
+                        <form action="bacheca.html?b_id=${bacheca_id}" method="post">
                             <h3>Bacheca di ${user_bacheca.nome}</h3>
                             <h2>Pubblica un nuovo post</h2>
                             <textarea rows="3" cols="20" name="cont" id="pres"></textarea><br>

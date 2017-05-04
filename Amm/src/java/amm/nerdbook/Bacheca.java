@@ -53,21 +53,25 @@ public class Bacheca extends HttpServlet {
             Nerd nerd = NerdFactory.getInstance().getNerdById(userID);
             if(nerd != null){
                 request.setAttribute("nerd", nerd);
+                List<Nerd> listaNerd = NerdFactory.getInstance().getNerdList();
+                request.setAttribute("listaNerd", listaNerd);
                 if(request.getParameter("b_id")!=null){
                     Integer b_id = Integer.parseInt(request.getParameter("b_id"));
                     int bacheca_id = b_id;
+                    request.setAttribute("bacheca_id", bacheca_id);
                     Nerd user_bacheca = NerdFactory.getInstance().getNerdById(bacheca_id);
                     request.setAttribute("user_bacheca", user_bacheca);
                     String contenuto = request.getParameter("cont");
                     if (contenuto != null){
                         Post newPost = new Post();
                         newPost.setId(bacheca_id*4);
-                        newPost.setUtente(user_bacheca);
+                        newPost.setUtente(nerd);
+                        newPost.setpBacheca(user_bacheca);
                         newPost.setContent(contenuto);
                         PostFactory.getInstance().addPost(newPost);
                         request.setAttribute("newPost", true);
                     }
-                    List<Post> posts = PostFactory.getInstance().getPostList(user_bacheca);
+                    List<Post> posts = PostFactory.getInstance().getPostListB(user_bacheca);
                     request.setAttribute("posts", posts);
                     request.getRequestDispatcher("bacheca.jsp").forward(request, response);
                 }else{
@@ -77,11 +81,12 @@ public class Bacheca extends HttpServlet {
                         Post newPost = new Post();
                         newPost.setId(userID*4);
                         newPost.setUtente(nerd);
+                        newPost.setpBacheca(nerd);
                         newPost.setContent(contenuto);
                         PostFactory.getInstance().addPost(newPost);
                         request.setAttribute("newPost", true);
                     }
-                    List<Post> posts = PostFactory.getInstance().getPostList(nerd);
+                    List<Post> posts = PostFactory.getInstance().getPostListB(nerd);
                     request.setAttribute("posts", posts);
                     request.getRequestDispatcher("bacheca.jsp").forward(request, response);
                 }

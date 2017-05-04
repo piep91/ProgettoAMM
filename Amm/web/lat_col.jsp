@@ -10,9 +10,9 @@
 <div id="lat_col">
     <h2>Persone</h2>
     <ul>
-        <li>Gigi</li>
-        <li>Wowo</li>
-        <li>Gianni</li>
+        <c:forEach var="nerd_b" items="${listaNerd}">
+            <li><a href="bacheca.html?b_id=${nerd_b.id}">${nerd_b.nome}</a></li>
+        </c:forEach>
     </ul>
     <h2>Gruppi</h2>
     <ul>

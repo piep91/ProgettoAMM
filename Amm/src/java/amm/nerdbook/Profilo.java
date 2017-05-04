@@ -9,6 +9,7 @@ import amm.nerdbook.Classi.NerdFactory;
 import amm.nerdbook.Classi.Nerd;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,6 +53,8 @@ public class Profilo extends HttpServlet {
             Nerd nerd = NerdFactory.getInstance().getNerdById(userID);
             if(nerd != null){
                 request.setAttribute("nerd", nerd);
+                List<Nerd> listaNerd = NerdFactory.getInstance().getNerdList();
+                request.setAttribute("listaNerd", listaNerd);
                 request.getRequestDispatcher("profilo.jsp").forward(request, response);
                 String nome = request.getParameter("name");
                 String cognome = request.getParameter("surname");

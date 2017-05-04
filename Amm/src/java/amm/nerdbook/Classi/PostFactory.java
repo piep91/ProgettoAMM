@@ -30,18 +30,21 @@ public class PostFactory {
         post1.setId(0);
         post1.setContent("Primo post in assoluto su Nerdbook!");
         post1.setUtente(nerdFactory.getNerdById(0));
+        post1.setpBacheca(nerdFactory.getNerdById(1));
         
         Post post2 = new Post();
         post2.setId(1);
         post2.setContent("Sono arrivato tardi");
         post2.setUrlImg("img/allegato_post.jpg");
         post2.setUtente(nerdFactory.getNerdById(1));
+        post2.setpBacheca(nerdFactory.getNerdById(0));
         post2.setTipoPost(Post.Tipo.T_AND_I);
         
         Post post3 = new Post();
         post3.setId(2);
         post3.setContent("Iscrivetevi a questo sito di cashback: http://it.beruby.com/promocode/uVjKCl");
         post3.setUtente(nerdFactory.getNerdById(2));
+        post3.setpBacheca(nerdFactory.getNerdById(2));
         
         listaPost.add(post1);
         listaPost.add(post2);
@@ -68,4 +71,12 @@ public class PostFactory {
         return listaPostByUser;
     }
     
+    public List getPostListB(Nerd nerd){
+        List<Post> listaPostByUserB = new ArrayList<Post>();
+        
+        for(Post post : this.listaPost){
+            if(post.getpBacheca().equals(nerd)) listaPostByUserB.add(post);
+        }
+        return listaPostByUserB;
+    }
 }

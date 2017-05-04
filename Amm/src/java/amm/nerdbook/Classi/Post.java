@@ -9,13 +9,14 @@ package amm.nerdbook.Classi;
  * @author Pierandrea
  */
 public class Post {
-    
+
     public enum Tipo {
         TEXT, IMAGE, T_AND_I
     };
     
     private int id;
     private Nerd utente;
+    private Nerd pBacheca;
     private String content;
     private String urlImg;
     private Tipo tipoPost;
@@ -23,6 +24,7 @@ public class Post {
     public Post(){
         id = 0;
         utente = null;
+        pBacheca = null;
         content = "";
         urlImg = "";
         tipoPost = Tipo.TEXT;
@@ -56,6 +58,20 @@ public class Post {
         this.utente = utente;
     }
 
+    /**
+     * @return the pBacheca
+     */
+    public Nerd getpBacheca() {
+        return pBacheca;
+    }
+
+    /**
+     * @param pBacheca the pBacheca to set
+     */
+    public void setpBacheca(Nerd pBacheca) {
+        this.pBacheca = pBacheca;
+    }
+    
     /**
      * @return the content
      */
