@@ -41,7 +41,7 @@ public class GruppoFactory {
         ArrayList<Nerd> listaNerdGruppo2 = new ArrayList<Nerd>();
         listaNerdGruppo2.add(nerdFactory.getNerdById(1));
         listaNerdGruppo2.add(nerdFactory.getNerdById(2));
-        gruppo1.setListaNerdGruppo(listaNerdGruppo2);
+        gruppo2.setListaNerdGruppo(listaNerdGruppo2);
         
         listaGruppi.add(gruppo1);
         listaGruppi.add(gruppo2);
@@ -54,5 +54,13 @@ public class GruppoFactory {
         return null;
     }
     
-    
+    public Gruppo getGruppoByUser(Nerd nerd){
+        for (Gruppo gruppo : this.listaGruppi){
+            List<Nerd> listaNerd = gruppo.getListaNerdGruppo();
+            for (Nerd g_nerd : listaNerd){
+                if(g_nerd.equals(nerd)) return gruppo;
+            }
+        }
+        return null;
+    }
 }
