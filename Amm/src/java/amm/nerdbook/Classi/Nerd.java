@@ -13,7 +13,7 @@ public class Nerd {
     private int id;
     private String nome;
     private String cognome;
-    private String email;
+    private String pres;
     private String password;
     private String urlFotoProfilo;
     
@@ -21,7 +21,7 @@ public class Nerd {
         id = 0;
         nome = "";
         cognome = "";
-        email = "";
+        pres = "";
         password = "";
         urlFotoProfilo = "";
     }
@@ -69,17 +69,17 @@ public class Nerd {
     }
 
     /**
-     * @return the email
+     * @return the pres
      */
-    public String getEmail() {
-        return email;
+    public String getPres() {
+        return pres;
     }
 
     /**
-     * @param email the email to set
+     * @param pres the pres to set
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPres(String pres) {
+        this.pres = pres;
     }
 
     /**
@@ -111,7 +111,7 @@ public class Nerd {
     }
     
     public int checkCompleteProfile(){
-        if(this.nome.equals("") && this.cognome.equals("") && this.email.equals("") && this.urlFotoProfilo.equals("")){
+        if(this.nome.equals("") || this.cognome.equals("") || this.pres.equals("") || this.urlFotoProfilo.equals("")){
             return -1;
         }else{
             return 1;

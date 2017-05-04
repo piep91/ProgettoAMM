@@ -32,7 +32,7 @@
                     <input type="password" name="psw" id="psw"/><br>
                     <button type="submit">Accedi</button>
                     <c:if test="${invalidData == true}">
-                    <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
+                    <div id="invalidDataWarning">Dati errati</div>
                     </c:if>
                 </div>
             </form>

@@ -19,6 +19,11 @@
     </head>
     
     <body>
+        <c:if test="${accessDenied==true}">
+        <div id="error">Accesso negato</div>
+        </c:if>
+        
+        <c:if test="${accessDenied==null || accessDenied!=true}">
         <!--header-->
         <c:set var="id" value="title" scope="request"/>
         <jsp:include page="header.jsp"/>
@@ -30,7 +35,7 @@
                     --><li><a href="bacheca.html">Bacheca</a></li>
                 </ol>
                 <div id="logout">
-                    Pieppo
+                    ${nerd.nome}
                     <a href="login.html?logout=1">Logout</a>
                 </div>
             </nav>
@@ -57,8 +62,12 @@
                     <label for="c_psw">Conferma password</label>
                     <input type="password" name="c_psw" id="c_psw"/><br>
                     <button type="submit">Applica</button>
+                    <c:if test="${profileModified == true}">
+                    <div id="confirm">Dati aggiornati</div>
+                    </c:if>
                 </div>
             </form>
         </div>
+        </c:if>
     </body>
 </html>

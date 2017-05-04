@@ -27,7 +27,7 @@ public class NerdFactory {
         user1.setId(0);
         user1.setNome("Gigi");
         user1.setCognome("Pintus");
-        user1.setEmail("gigi@gmail.com");
+        user1.setPres("Ciao!!");
         user1.setPassword("1234");
         user1.setUrlFotoProfilo("img/Profile01.png");
         
@@ -35,7 +35,7 @@ public class NerdFactory {
         user2.setId(1);
         user2.setNome("Wowo");
         user2.setCognome("Pinna");
-        user2.setEmail("wowo@gmail.com");
+        user2.setPres("Hola!!");
         user2.setPassword("1234");
         user2.setUrlFotoProfilo("img/Profile02.jpg");
         
@@ -43,13 +43,19 @@ public class NerdFactory {
         user3.setId(2);
         user3.setNome("Gianni");
         user3.setCognome("Scalas");
-        user3.setEmail("gianni@gmail.com");
+        user3.setPres("Yess!!");
         user3.setPassword("1234");
         user3.setUrlFotoProfilo("img/Profile03.png");
+        
+        Nerd incompleto = new Nerd();
+        incompleto.setId(3);
+        incompleto.setNome("Incompleto");
+        incompleto.setPassword("1234");
         
         listaNerd.add(user1);
         listaNerd.add(user2);
         listaNerd.add(user3);
+        listaNerd.add(incompleto);
     }
     
     public Nerd getNerdById(int id){

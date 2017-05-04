@@ -51,8 +51,21 @@ public class Profilo extends HttpServlet {
             
             Nerd nerd = NerdFactory.getInstance().getNerdById(userID);
             if(nerd != null){
-                
-                
+                request.setAttribute("nerd", nerd);
+                request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                String nome = request.getParameter("name");
+                String cognome = request.getParameter("surname");
+                String img_pro = request.getParameter("img");
+                String password = request.getParameter("psw");
+                String c_pass = request.getParameter("c_psw");
+                if(nome != null && cognome != null && img_pro != null && password != null && c_pass != null && password.equals(c_pass)){
+                    nerd.setNome(nome);
+                    nerd.setCognome(cognome);
+                    nerd.setUrlFotoProfilo(img_pro);
+                    nerd.setPassword(password);
+                    request.setAttribute("profileModified", true);
+                    request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                }
             }else{
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }
