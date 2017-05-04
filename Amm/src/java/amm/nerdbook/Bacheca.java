@@ -5,12 +5,16 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.Classi.*;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,6 +35,34 @@ public class Bacheca extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        HttpSession session = request.getSession(false);
+        
+        if(session!=null && session.getAttribute("loggedIn")!=null && session.getAttribute("loggedIn").equals(true)){
+            
+            String user = request.getParameter("user");
+            
+            int userID;
+
+            if(user != null){
+                userID = Integer.parseInt(user);
+            } else {
+                Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
+                userID = loggedUserID;
+            }
+            
+            Nerd nerd = NerdFactory.getInstance().getNerdById(userID);
+            if(nerd != null){
+                request.setAttribute("nerd", nerd);
+                List<Post> posts = PostFactory.getInstance().getPostList(nerd);
+                request.setAttribute("posts", posts);
+                request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+            }else {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
+        }else{
+            request.setAttribute("accessDenied", true);
+            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

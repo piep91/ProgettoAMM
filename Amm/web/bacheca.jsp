@@ -19,51 +19,52 @@
     </head>
     
     <body>
-        <!--header-->
-        <c:set var="id" value="title" scope="request"/>
-        <jsp:include page="header.jsp"/>
+        <c:if test="${accessDenied==true}">
+            <div id="error">Accesso negato</div>
+        </c:if>
         
-        <div id="navBar">
-            <nav>
-                <ol>
-                    <li><a href="profilo.html">Profilo</a></li><!--
-                    --><li class="active"><a href="bacheca.html">Bacheca</a></li>
-                </ol>
-                <div id="logout">
-                    Pieppo
-                    <a href="login.html?logout=1">Logout</a>
-                </div>
-            </nav>
-        </div>
-        <div id="divBody">
-            <!--barra laterale-->
-            <jsp:include page="lat_col.jsp"/>
-            
-            <div id="post">
-                <div>
-                    <div>
-                        <img alt="immagine_profilo" class="img_pro" src="img/Profile01.png">
-                        <h3>Gigi</h3>
+        <c:if test="${accessDenied==null || accessDenied!=true}">
+            <!--header-->
+            <c:set var="id" value="title" scope="request"/>
+            <jsp:include page="header.jsp"/>
+
+            <div id="navBar">
+                <nav>
+                    <ol>
+                        <li><a href="profilo.html">Profilo</a></li><!--
+                        --><li class="active"><a href="bacheca.html">Bacheca</a></li>
+                    </ol>
+                    <div id="logout">
+                        ${nerd.nome}
+                        <a href="login.html?logout=1">Logout</a>
                     </div>
-                    <p>Primo post in assoluto su Nerdbook!</p>
-                </div>
-                <div>
-                    <div>
-                        <img alt="immagine_profilo" class="img_pro" src="img/Profile02.jpg">
-                        <h3>Wowo</h3>
-                    </div>
-                    <p>Sono arrivato tardi</p>
-                    <img alt="allegato" class="allegato" src="img/allegato_post.jpg">
-                </div>
-                <div>
-                    <div>
-                        <img alt="immagine_profilo" class="img_pro" src="img/Profile03.png">
-                        <h3>Gianni</h3>
-                    </div>
-                    <p>Iscrivetevi a questo sito di cashback!</p>
-                    <a href="http://it.beruby.com/promocode/uVjKCl" target="_blank">http://it.beruby.com/promocode/uVjKCl</a>
+                </nav>
+            </div>
+            <div id="divBody">
+                <!--barra laterale-->
+                <jsp:include page="lat_col.jsp"/>
+
+                <div id="post">
+                    <c:forEach var="post" items="${posts}">
+                        <div>
+                            <div>
+                                <img alt="immagine_profilo" class="img_pro" src="${post.utente.urlFotoProfilo}">
+                                <h3>${post.utente.nome}</h3>
+                            </div>
+                            <c:if test="${post.tipoPost == 'TEXT'}">
+                                <p>${post.content}</p>
+                            </c:if>
+                            <c:if test="${post.tipoPost == 'IMAGE'}">
+                                <img alt="allegato" class="allegato" src="${post.urlImg}">
+                            </c:if>
+                            <c:if test="${post.tipoPost == 'T_AND_I'}">
+                                <p>${post.content}</p>
+                                <img alt="allegato" class="allegato" src="${post.urlImg}">
+                            </c:if>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
-        </div>
+        </c:if>
     </body>
 </html>
