@@ -1,0 +1,36 @@
+Nerd:
+    id (chiave primaria)
+    nome
+    cognome
+    frase di presentazione
+    password
+    url foto profilo
+
+TipoPost:
+    id (chiave primaria)
+    nome
+
+Post:
+    id (chiave primaria)
+    autore (chiave esterna - Nerd.id)
+    contenuto
+    url immagine
+    tipo (chiave esterna - TipoPost.id)
+
+Gruppi:
+    id (chiave primaria)
+    nome
+
+MembriGruppi:
+    id gruppo (chiave esterna - Gruppi.id)
+    id membro (chiave esterna - Nerd.id)
+
+PostBacheca:
+    id proprietario bacheca (chiave esterna - Nerd.id)
+    id post pubblicato (chiave esterna - Post.id)
+
+PostGruppi:
+    id gruppo (chiave esterna - Gruppi.id)
+    id post pubblicato sul gruppo (chiave esterna - Post.id)
+
+
