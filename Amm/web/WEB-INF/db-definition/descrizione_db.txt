@@ -1,3 +1,5 @@
+STRUTTURA DATABASE
+
 Nerd:
     id (chiave primaria)
     nome
@@ -34,3 +36,10 @@ PostGruppi:
     id post pubblicato sul gruppo (chiave esterna - Post.id)
 
 
+RELAZIONI
+
+Post ------> TipoPost  (uno a molti)
+Nerd ------> Post (uno a molti)
+Gruppi --- MembriGruppi ---> Nerd (molti a molti)
+Nerd --- PostBacheca ---> Post (molti a molti)
+Gruppi --- PostGruppi ---> Post (molti a molti)

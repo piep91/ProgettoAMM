@@ -104,3 +104,66 @@ INSERT INTO tipoPost (tipoPost_id, tipoPost_nome)
 VALUES (default,
         'IMAGE');
 
+--Popolamento tabella posts
+
+INSERT INTO posts (post_id, autore, contenuto, tipo)
+VALUES (default,
+        '1',
+        'Primo post in assoluto su Nerdbook!',
+        '1');
+
+INSERT INTO posts (post_id, autore, contenuto, url_allegato, tipo)
+VALUES (default,
+        '2',
+        'Sono arrivato tardi',
+        'img/allegato_post.jpg',
+        '2');
+
+INSERT INTO posts (post_id, autore, contenuto, tipo)
+VALUES (default,
+        '3',
+        'Iscrivetevi a questo sito di cashback: http://it.beruby.com/promocode/uVjKCl',
+        '1');
+
+--Popolamento tabella gruppi
+
+INSERT INTO gruppi (gruppo_id, gruppo_nome)
+VALUES (default,
+        'Consolari');
+
+INSERT INTO gruppi (gruppo_id, gruppo_nome)
+VALUES (default,
+        'PCisti');
+
+--Popolamento tabella membriGruppi
+
+INSERT INTO membriGruppi (id_gruppo, id_membro)
+VALUES ('1',
+        '1');
+
+INSERT INTO membriGruppi (id_gruppo, id_membro)
+VALUES ('1',
+        '2');
+
+INSERT INTO membriGruppi (id_gruppo, id_membro)
+VALUES ('2',
+        '2');
+
+INSERT INTO membriGruppi (id_gruppo, id_membro)
+VALUES ('2',
+        '3');
+
+--Popolamento tabella postBacheca
+
+INSERT INTO postBacheca (proprietario, id_post)
+VALUES ('2',
+        '1');
+
+INSERT INTO postBacheca (proprietario, id_post)
+VALUES ('1',
+        '2');
+
+INSERT INTO postBacheca (proprietario, id_post)
+VALUES ('3',
+        '3');
+
