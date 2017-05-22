@@ -5,6 +5,11 @@
  */
 package amm.nerdbook.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -34,46 +39,43 @@ public class NerdFactory {
     
     private ArrayList<Nerd> listaNerd = new ArrayList<Nerd>();
     
-    private NerdFactory(){
-        
-        Nerd user1 = new Nerd();
-        user1.setId(0);
-        user1.setNome("Gigi");
-        user1.setCognome("Pintus");
-        user1.setPres("Ciao!!");
-        user1.setPassword("1234");
-        user1.setUrlFotoProfilo("img/Profile01.png");
-        
-        Nerd user2 = new Nerd();
-        user2.setId(1);
-        user2.setNome("Wowo");
-        user2.setCognome("Pinna");
-        user2.setPres("Hola!!");
-        user2.setPassword("1234");
-        user2.setUrlFotoProfilo("img/Profile02.jpg");
-        
-        Nerd user3 = new Nerd();
-        user3.setId(2);
-        user3.setNome("Gianni");
-        user3.setCognome("Scalas");
-        user3.setPres("Yess!!");
-        user3.setPassword("1234");
-        user3.setUrlFotoProfilo("img/Profile03.png");
-        
-        Nerd incompleto = new Nerd();
-        incompleto.setId(3);
-        incompleto.setNome("Incompleto");
-        incompleto.setPassword("1234");
-        
-        listaNerd.add(user1);
-        listaNerd.add(user2);
-        listaNerd.add(user3);
-        listaNerd.add(incompleto);
-    }
+    private NerdFactory(){}
     
     public Nerd getNerdById(int id){
-        for (Nerd user : this.listaNerd){
-            if(user.getId() == id) return user; 
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
+            String query = 
+                      "select * from nerd "
+                    + "where nerd_id = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, id);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+            // ciclo sulle righe restituite
+            if(res.next()){
+                Nerd current = new Nerd();
+                current.setId(res.getInt("nerd_id"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setPres(res.getString("pres"));
+                current.setUrlFotoProfilo(res.getString("url_foto"));
+                
+                stmt.close();
+                conn.close();
+                return current;
+            }
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -83,9 +85,36 @@ public class NerdFactory {
     }
     
     public int getIdByUserAndPassword(String nome, String password){
-        for (Nerd user : this.listaNerd){
-            if (user.getNome().equals(nome) && user.getPassword().equals(password))
-                return user.getId();
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
+            
+            String query = 
+                      "select nerd_id from nerd "
+                    + "where nome = ? and password = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, nome);
+            stmt.setString(2, password);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                int id = res.getInt("nerd_id");
+
+                stmt.close();
+                conn.close();
+                return id;
+            }
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return -1;
     }
