@@ -5,6 +5,11 @@
  */
 package amm.nerdbook.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 /**
@@ -34,38 +39,55 @@ public class PostFactory {
     
     private ArrayList<Post> listaPost = new ArrayList<Post>();
     
-    private PostFactory(){
-        
-        NerdFactory nerdFactory = NerdFactory.getInstance();
-        
-        Post post1 = new Post();
-        post1.setId(0);
-        post1.setContent("Primo post in assoluto su Nerdbook!");
-        post1.setUtente(nerdFactory.getNerdById(0));
-        post1.setpBacheca(nerdFactory.getNerdById(1));
-        
-        Post post2 = new Post();
-        post2.setId(1);
-        post2.setContent("Sono arrivato tardi");
-        post2.setUrlImg("img/allegato_post.jpg");
-        post2.setUtente(nerdFactory.getNerdById(1));
-        post2.setpBacheca(nerdFactory.getNerdById(0));
-        post2.setTipoPost(Post.Tipo.T_AND_I);
-        
-        Post post3 = new Post();
-        post3.setId(2);
-        post3.setContent("Iscrivetevi a questo sito di cashback: http://it.beruby.com/promocode/uVjKCl");
-        post3.setUtente(nerdFactory.getNerdById(2));
-        post3.setpBacheca(nerdFactory.getNerdById(2));
-        
-        listaPost.add(post1);
-        listaPost.add(post2);
-        listaPost.add(post3);
-    }
+    private PostFactory(){}
     
     public Post getPostById(int id) {
-        for (Post post : this.listaPost) {
-            if (post.getId() == id) return post;
+        NerdFactory nerdFactory = NerdFactory.getInstance();
+        try{
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
+            
+            String query =
+                        "select * from posts "
+                      + "join tipoPost on posts.tipo = tipoPost.tipoPost_id "
+                      + "join postBacheca on posts.post_id = postBacheca.id_post "
+                      + "where post_id = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, id);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                //imposto il contenuto del post
+                current.setContent(res.getString("contenuto"));
+                //imposto la possibile immagine allegata
+                current.setUrlImg(res.getString("url_allegato"));
+                //imposto il tipo del post
+                current.setTipoPost(this.tipoPostFromString(res.getString("tipoPost_nome")));
+                //imposto l'autore del post
+                Nerd autore = nerdFactory.getNerdById(res.getInt("autore"));
+                current.setUtente(autore);
+                //imposto il proprietario della bacheca sulla quale è stato postato il post
+                Nerd pBacheca = nerdFactory.getNerdById(res.getInt("proprietario"));
+                current.setpBacheca(pBacheca);
+                
+                stmt.close();
+                conn.close();
+                return current;
+            }
+            stmt.close();
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -76,19 +98,116 @@ public class PostFactory {
     
     public List getPostList(Nerd nerd){
         List<Post> listaPostByUser = new ArrayList<Post>();
+        NerdFactory nerdFactory = NerdFactory.getInstance();
         
-        for(Post post : this.listaPost){
-            if(post.getUtente().equals(nerd)) listaPostByUser.add(post);
+        try{
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
+            
+            String query =
+                        "select * from posts "
+                      + "join tipoPost on posts.tipo = tipoPost.tipoPost_id "
+                      + "join postBacheca on posts.post_id = postBacheca.id_post "
+                      + "where autore = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, nerd.getId());
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+            while(res.next()){
+                Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                //imposto il contenuto del post
+                current.setContent(res.getString("contenuto"));
+                //imposto la possibile immagine allegata
+                current.setUrlImg(res.getString("url_allegato"));
+                //imposto il tipo del post
+                current.setTipoPost(this.tipoPostFromString(res.getString("tipoPost_nome")));
+                //imposto l'autore del post
+                Nerd autore = nerdFactory.getNerdById(res.getInt("autore"));
+                current.setUtente(autore);
+                //imposto il proprietario della bacheca sulla quale è stato postato il post
+                Nerd pBacheca = nerdFactory.getNerdById(res.getInt("proprietario"));
+                current.setpBacheca(pBacheca);
+                
+                listaPostByUser.add(current);
+            }
+            stmt.close();
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
         return listaPostByUser;
     }
     
     public List getPostListB(Nerd nerd){
         List<Post> listaPostByUserB = new ArrayList<Post>();
+        NerdFactory nerdFactory = NerdFactory.getInstance();
         
-        for(Post post : this.listaPost){
-            if(post.getpBacheca().equals(nerd)) listaPostByUserB.add(post);
+        try{
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
+            
+            String query =
+                        "select * from posts "
+                      + "join tipoPost on posts.tipo = tipoPost.tipoPost_id "
+                      + "join postBacheca on posts.post_id = postBacheca.id_post "
+                      + "where proprietario = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, nerd.getId());
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+            while(res.next()){
+                Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                //imposto il contenuto del post
+                current.setContent(res.getString("contenuto"));
+                //imposto la possibile immagine allegata
+                current.setUrlImg(res.getString("url_allegato"));
+                //imposto il tipo del post
+                current.setTipoPost(this.tipoPostFromString(res.getString("tipoPost_nome")));
+                //imposto l'autore del post
+                Nerd autore = nerdFactory.getNerdById(res.getInt("autore"));
+                current.setUtente(autore);
+                //imposto il proprietario della bacheca sulla quale è stato postato il post
+                Nerd pBacheca = nerdFactory.getNerdById(res.getInt("proprietario"));
+                current.setpBacheca(pBacheca);
+                
+                listaPostByUserB.add(current);
+            }
+            stmt.close();
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
         return listaPostByUserB;
+    }
+    
+    private Post.Tipo tipoPostFromString(String tipo){
+        
+        if(tipo.equals("TEXT"))
+            return Post.Tipo.TEXT;
+        
+        return Post.Tipo.T_AND_I;
+    }
+    
+    private int tipoPostFromEnum(Post.Tipo tipo){
+        if(tipo == Post.Tipo.TEXT)
+                return 1;
+            else
+                return 2;
     }
 }

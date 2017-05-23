@@ -65,9 +65,6 @@
                             <c:if test="${post.tipoPost == 'TEXT'}">
                                 <p>${post.content}</p>
                             </c:if>
-                            <c:if test="${post.tipoPost == 'IMAGE'}">
-                                <img alt="allegato" class="allegato" src="${post.urlImg}">
-                            </c:if>
                             <c:if test="${post.tipoPost == 'T_AND_I'}">
                                 <p>${post.content}</p>
                                 <img alt="allegato" class="allegato" src="${post.urlImg}">

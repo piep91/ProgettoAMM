@@ -11,7 +11,7 @@ package amm.nerdbook.Classi;
 public class Post {
 
     public enum Tipo {
-        TEXT, IMAGE, T_AND_I
+        TEXT, T_AND_I
     };
     
     private int id;

@@ -33,11 +33,10 @@ public class NerdFactory {
     }
     
     public String getConnectionString(){
-            return this.connectionString;
+        return this.connectionString;
     }
     //Fine gestione DB
     
-    private ArrayList<Nerd> listaNerd = new ArrayList<Nerd>();
     
     private NerdFactory(){}
     
@@ -81,6 +80,35 @@ public class NerdFactory {
     }
     
     public List getNerdList(){
+        ArrayList<Nerd> listaNerd = new ArrayList<Nerd>();
+        try{
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
+            
+            String query = "select * from nerd";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+            // ciclo sulle righe restituite
+            while(res.next()){
+                Nerd current = new Nerd();
+                current.setId(res.getInt("nerd_id"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setPres(res.getString("pres"));
+                current.setUrlFotoProfilo(res.getString("url_foto"));
+                listaNerd.add(current);
+            }
+            stmt.close();
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
         return listaNerd;
     }
     
