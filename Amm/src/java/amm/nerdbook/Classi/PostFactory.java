@@ -37,7 +37,6 @@ public class PostFactory {
     }
     //Fine gestione DB
     
-    private ArrayList<Post> listaPost = new ArrayList<Post>();
     
     private PostFactory(){}
     
@@ -93,7 +92,7 @@ public class PostFactory {
     }
     
     public void addPost(Post post){
-        listaPost.add(post);
+        
     }
     
     public List getPostList(Nerd nerd){
