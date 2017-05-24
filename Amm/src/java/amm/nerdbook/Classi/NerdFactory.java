@@ -147,4 +147,41 @@ public class NerdFactory {
         return -1;
     }
     
+    public int deleteProfile(int userID){
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
+            
+            String query = 
+                      "delete from postBacheca "
+                    + "where proprietario = ?";
+            
+            String query2 =
+                      "delete from nerd "
+                    + "where nerd_id = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            PreparedStatement stmt2 = conn.prepareStatement(query2);
+            
+            // Si associano i valori
+            stmt.setInt(1, userID);
+            
+            // Esecuzione query
+            stmt.executeUpdate();
+            
+            // Si associano i valori
+            stmt2.setInt(1, userID);
+            
+            // Esecuzione query
+            stmt2.executeUpdate();
+            stmt.close();
+            stmt2.close();
+            conn.close();
+            return 1;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }

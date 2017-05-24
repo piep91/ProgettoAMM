@@ -56,6 +56,15 @@ public class Profilo extends HttpServlet {
                 List<Nerd> listaNerd = NerdFactory.getInstance().getNerdList();
                 request.setAttribute("listaNerd", listaNerd);
                 request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                int delete = Integer.parseInt(request.getParameter("delete"));
+                if(delete == -1){
+                    int conf = NerdFactory.getInstance().deleteProfile(userID);
+                    if(conf==-1){
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                    }else{
+                        request.setAttribute("deleteError", true);
+                    }
+                }
                 String nome = request.getParameter("name");
                 String cognome = request.getParameter("surname");
                 String img_pro = request.getParameter("img");

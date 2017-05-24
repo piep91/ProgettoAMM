@@ -123,7 +123,8 @@ public class PostFactory {
             
             // Esecuzione query
             ResultSet res = stmt2.executeQuery();
-            
+            stmt2.close();
+
             if(res.next()){
                 int post_id = res.getInt("post_id");
                 

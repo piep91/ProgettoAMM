@@ -67,6 +67,14 @@
                         </c:if>
                     </div>
                 </form>
+                <form action="profilo.html?delete=-1" method="post">
+                    <div>
+                        <button type="submit">Elimina Profilo</button>
+                        <c:if test="${deleteError == true}">
+                                <div id="dError">Errore</div>
+                        </c:if>
+                    </div>
+                </form>
             </div>
         </c:if>
     </body>
