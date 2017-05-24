@@ -97,7 +97,7 @@ public class GruppoFactory {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
             String query = 
-                      "select * from gruppi "
+                      "select gruppo_id from gruppi "
                     + "join membriGruppi on gruppi.gruppo_id = membriGruppi.id_gruppo "
                     + "where id_membro = ?";
             
@@ -110,7 +110,9 @@ public class GruppoFactory {
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
             
-            
+            while(res.next()){
+                listaGruppi.add(this.getGruppoById(res.getInt("gruppo_id")));
+            }
         }catch (SQLException e) {
             e.printStackTrace();
         }
