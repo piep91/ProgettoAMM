@@ -92,7 +92,30 @@ public class PostFactory {
     }
     
     public void addPost(Post post){
-        
+        try{
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "gato", "gato");
+            
+            String query = 
+                      "insert into posts (post_id, autore, contenuto, tipo) "
+                    + "select proprietario from posts "
+                    + "join postBacheca on posts.post_id = postBacheca.id_post "
+                    + "values (default, ? , ? , ? , ?)";
+            
+             // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, post.getUtente().getId());
+            
+            stmt.setString(2, post.getContent());
+            
+            stmt.setInt(3, this.tipoPostFromEnum(post.getTipoPost()));
+            
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
     
     public List getPostList(Nerd nerd){
