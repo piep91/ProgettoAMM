@@ -108,22 +108,22 @@ VALUES (default,
 
 INSERT INTO posts (post_id, autore, contenuto, tipo)
 VALUES (default,
-        '1',
+        1,
         'Primo post in assoluto su Nerdbook!',
-        '1');
+        1);
 
 INSERT INTO posts (post_id, autore, contenuto, url_allegato, tipo)
 VALUES (default,
-        '2',
+        2,
         'Sono arrivato tardi',
         'img/allegato_post.jpg',
-        '2');
+        2);
 
 INSERT INTO posts (post_id, autore, contenuto, tipo)
 VALUES (default,
-        '3',
+        3,
         'Iscrivetevi a questo sito di cashback: http://it.beruby.com/promocode/uVjKCl',
-        '1');
+        1);
 
 --Popolamento tabella gruppi
 
@@ -138,32 +138,32 @@ VALUES (default,
 --Popolamento tabella membriGruppi
 
 INSERT INTO membriGruppi (id_gruppo, id_membro)
-VALUES ('1',
-        '1');
+VALUES (1,
+        1);
 
 INSERT INTO membriGruppi (id_gruppo, id_membro)
-VALUES ('1',
-        '2');
+VALUES (1,
+        2);
 
 INSERT INTO membriGruppi (id_gruppo, id_membro)
-VALUES ('2',
-        '2');
+VALUES (2,
+        2);
 
 INSERT INTO membriGruppi (id_gruppo, id_membro)
-VALUES ('2',
-        '3');
+VALUES (2,
+        3);
 
 --Popolamento tabella postBacheca
 
 INSERT INTO postBacheca (proprietario, id_post)
-VALUES ('2',
-        '1');
+VALUES (2,
+        1);
 
 INSERT INTO postBacheca (proprietario, id_post)
-VALUES ('1',
-        '2');
+VALUES (1,
+        2);
 
 INSERT INTO postBacheca (proprietario, id_post)
-VALUES ('3',
-        '3');
+VALUES (3,
+        3);
 
