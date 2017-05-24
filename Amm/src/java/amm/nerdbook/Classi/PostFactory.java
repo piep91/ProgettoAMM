@@ -94,15 +94,13 @@ public class PostFactory {
     public void addPost(Post post){
         try{
             // path, username, password
-            Connection conn = DriverManager.getConnection(connectionString, "gato", "gato");
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
             
             String query = 
                       "insert into posts (post_id, autore, contenuto, tipo) "
-                    + "select proprietario from posts "
-                    + "join postBacheca on posts.post_id = postBacheca.id_post "
-                    + "values (default, ? , ? , ? , ?)";
+                    + "values (default, ? , ? , ?)";
             
-             // Prepared Statement
+            // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             
             // Si associano i valori
@@ -112,7 +110,37 @@ public class PostFactory {
             
             stmt.setInt(3, this.tipoPostFromEnum(post.getTipoPost()));
             
+            // Esecuzione query
+            stmt.executeUpdate();
             
+            String query2 =
+                        "select post_id from posts "
+                      + "where post_id not in "
+                      + "(select id_post from postBacheca)";
+            
+             // Prepared Statement
+            PreparedStatement stmt2 = conn.prepareStatement(query2);
+            
+            // Esecuzione query
+            ResultSet res = stmt2.executeQuery();
+            
+            if(res.next()){
+                int post_id = res.getInt("post_id");
+                
+                String query3 =
+                        "insert into postBacheca (id_post, proprietario) "
+                      + "values (?, ?)";
+                
+                // Prepared Statement
+                PreparedStatement stmt3 = conn.prepareStatement(query3);
+                
+                stmt3.setInt(1, post_id);
+                
+                stmt3.setInt(2, post.getpBacheca().getId());
+                
+                // Esecuzione query
+                stmt3.executeUpdate();
+            }
         }catch(SQLException e){
             e.printStackTrace();
         }

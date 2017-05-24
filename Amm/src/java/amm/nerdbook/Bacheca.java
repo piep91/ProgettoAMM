@@ -64,7 +64,6 @@ public class Bacheca extends HttpServlet {
                     String contenuto = request.getParameter("cont");
                     if (contenuto != null){
                         Post newPost = new Post();
-                        newPost.setId(bacheca_id*4);
                         newPost.setUtente(nerd);
                         newPost.setpBacheca(user_bacheca);
                         newPost.setContent(contenuto);
@@ -79,7 +78,6 @@ public class Bacheca extends HttpServlet {
                     String contenuto = request.getParameter("cont");
                     if (contenuto != null){
                         Post newPost = new Post();
-                        newPost.setId(userID*4);
                         newPost.setUtente(nerd);
                         newPost.setpBacheca(nerd);
                         newPost.setContent(contenuto);
