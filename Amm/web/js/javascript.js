@@ -4,4 +4,45 @@
  * and open the template in the editor.
  */
 
+function createElement(user){
+    var list = $("<li>");
+    var link = $("<a>")
+            .attr("href", "bacheca.html?b_id="+user.id)
+            .html(user.nome+" "+user.cognome);
+    
+}
 
+function stateSuccess(data){
+    var userListPage = $("#usersList");
+    
+    $(userListPage).empty();
+    for(var instance in data){
+        $(userListPage).append(createElement(data[instance]));
+    }
+}
+
+function stateFailure(data, state){
+    console.log(state);
+}
+
+$(document).ready(function(){
+    $("#searchUser").click(function(){
+        
+        var wantedNerd = $("#searchField")[0].value;
+        
+        $.ajax({
+            url: "filter.json",
+            data:{
+                cmd: "search",
+                q: wantedNerd
+            },
+            dataType:"json",
+            success: function(data, state){
+                stateSuccess(data)
+            },
+            error: function(data, state){
+                stateFailure(data, state)
+            }
+        });
+    })
+});
