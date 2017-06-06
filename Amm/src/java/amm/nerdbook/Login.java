@@ -75,10 +75,10 @@ public class Login extends HttpServlet {
             //Verifica che il profilo dell'utente sia completo e
             //reindirizza alla bacheca in caso positivo o al profilo in caso negativo
             if(NerdFactory.getInstance().getNerdById((int)(session.getAttribute("loggedUserID"))).checkCompleteProfile() == -1){
-                request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                request.getRequestDispatcher("profilo.html").forward(request, response);
                 return;
             }else{
-                request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+                request.getRequestDispatcher("bacheca.html").forward(request, response);
                 return;
             }
         //Se l'utente non è loggato    
@@ -96,10 +96,10 @@ public class Login extends HttpServlet {
                     //Verifica che il profilo dell'utente sia completo e
                     //reindirizza alla bacheca in caso positivo o al profilo in caso negativo
                     if(NerdFactory.getInstance().getNerdById(loggedUserID).checkCompleteProfile() == -1){
-                        request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                        request.getRequestDispatcher("profilo.html").forward(request, response);
                         return;
                     }else{
-                        request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+                        request.getRequestDispatcher("bacheca.html").forward(request, response);
                         return;
                     }
                 //Se l'utente non è valido

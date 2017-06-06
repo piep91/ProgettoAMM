@@ -60,7 +60,7 @@ public class Profilo extends HttpServlet {
                 if(delete == -1){
                     int conf = NerdFactory.getInstance().deleteProfile(userID);
                     if(conf==-1){
-                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        request.getRequestDispatcher("login.html").forward(request, response);
                     }else{
                         request.setAttribute("deleteError", true);
                     }
