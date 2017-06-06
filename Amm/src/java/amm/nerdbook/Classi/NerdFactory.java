@@ -112,6 +112,45 @@ public class NerdFactory {
         return listaNerd;
     }
     
+    public List getNerdList(String search){
+        ArrayList<Nerd> listaNerd = new ArrayList<Nerd>();
+        try{
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "pieppo", "pieppo");
+            
+            String query = 
+                        "select * from nerd "
+                      + "where nome like ? or cognome like ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, "%" + search + "%");
+            stmt.setString(2, "%" + search + "%");
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+            // ciclo sulle righe restituite
+            while(res.next()){
+                Nerd current = new Nerd();
+                current.setId(res.getInt("nerd_id"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setPres(res.getString("pres"));
+                current.setUrlFotoProfilo(res.getString("url_foto"));
+                listaNerd.add(current);
+            }
+            stmt.close();
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listaNerd;
+    }
+    
     public int getIdByUserAndPassword(String nome, String password){
         try {
             // path, username, password
