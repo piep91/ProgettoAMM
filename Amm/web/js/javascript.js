@@ -12,12 +12,23 @@ function createElement(user){
             .append(link);
 }
 
+function createWarning(){
+    var warning = $("<p>")
+            .html("Nessun risultato");
+    return $("<li>")
+            .append(warning);
+}
+
 function stateSuccess(data){
     var userListPage = $("#usersList");
     
     $(userListPage).empty();
-    for(var instance in data){
-        $(userListPage).append(createElement(data[instance]));
+    if(jQuery.isEmptyObject(data)){
+        $(userListPage).append(createWarning());
+    }else{
+        for(var instance in data){
+            $(userListPage).append(createElement(data[instance]));
+        }
     }
 }
 
