@@ -5,11 +5,11 @@
  */
 
 function createElement(user){
-    var list = $("<li>");
     var link = $("<a>")
             .attr("href", "bacheca.html?b_id="+user.id)
             .html(user.nome+" "+user.cognome);
-    
+    return $("<li>")
+            .append(link);
 }
 
 function stateSuccess(data){
