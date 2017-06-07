@@ -4,14 +4,18 @@
     Author     : Pierandrea
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page contentType="application/json" pageEncoding="UTF-8"%>
+<%@ taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<json:array>
+    <c:forEach var="nerd" items="${listaNerd}">
+        <json:object>
+            <json:property name="nome" value="${nerd.nome}"/>
+            <json:property name="cognome" value="${nerd.cognome}"/>
+            <json:property name="id" value="${nerd.id}"/>
+            <json:property name="pres" value="${nerd.pres}"/>
+            <json:property name="password" value="${nerd.password}"/>
+            <json:property name="urlFotoProfilo" value="${nerd.urlFotoProfilo}"/>
+        </json:object>
+    </c:forEach>
+</json:array>
